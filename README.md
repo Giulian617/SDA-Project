@@ -3,6 +3,7 @@
 ### Studenti
 
 - Craciun Alexandru-Emilian, AVL
+- Buzatu Giulian, BST
 
 <br>
 
@@ -28,7 +29,7 @@ https://www.infoarena.ro/problema/abce
   - 500.000 - operatii cu prob egala 20% (op are 50% sansa ca numarul sa se afle in structura)
 
 #### Test 4
-  - 1.000 de inserari urmate de 1.000 de stergeri in aceeasi ordine
+  - cate 1.000 de inserari urmate de 1.000 de stergeri in aceeasi ordine
 
 #### Test 5
-  - 100.000 de inserari urmate de 1.000 de stergeri in aceeasi ordine
+  - cate 100.000 de inserari urmate de 1.000 de stergeri in aceeasi ordine
