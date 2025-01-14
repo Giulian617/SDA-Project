@@ -111,19 +111,19 @@ private:
         return min(node->value, successor(node->left, x));
     }
 
-    void inorder_walk(BSTNode *node, int x, int y, vector<int> &ans)
+    void inorder_walk(BSTNode *node, int x, int y, long long &sum)
     {
         if (node == nullptr)
             return;
 
         if (x < node->value)
-            inorder_walk(node->left, x, y, ans);
+            inorder_walk(node->left, x, y, sum);
 
         if (x <= node->value && node->value <= y)
-            ans.push_back(node->value);
+            sum += node->value;
 
         if (y > node->value)
-            inorder_walk(node->right, x, y, ans);
+            inorder_walk(node->right, x, y, sum);
     }
 
     void deleteTree(BSTNode *node)
@@ -166,14 +166,11 @@ public:
     {
         return successor(this->root, x);
     }
-    void inorder_walk(int x, int y, vector<int> &ans)
+    long long inorder_walk(int x, int y)
     {
-        inorder_walk(this->root, x, y, ans);
-        if (!ans.size())
-        {
-            ans.push_back(NEG_INF);
-            ans.push_back(INF);
-        }
+        long long sum = 0;
+        inorder_walk(this->root, x, y, sum);
+        return sum;
     }
 };
 
@@ -219,11 +216,7 @@ int main()
         else
         {
             cin >> x >> y;
-            vector<int> inorder_walk;
-            bst.inorder_walk(x, y, inorder_walk);
-            for (int value : inorder_walk)
-                cout << value << ' ';
-            cout << '\n';
+            cout << bst.inorder_walk(x, y) << '\n';
         }
     }
     return 0;
