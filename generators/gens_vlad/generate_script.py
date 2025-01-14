@@ -39,14 +39,14 @@ def compile(filenames, args, out):
 
 def generate():
     compile(
-        ["final.cpp", "gen_random_insert_random_contains.cpp", "gen_range_sum.cpp"], 
+        ["final.cpp", "gen_random_insert_random_contains.cpp", "gen_range_sum.cpp", "all_in_one_gen.cpp"], 
         "-O2 -std=c++20 -o", 
-        ["solution", "gen_insert_contains", "gen_in_range"]
+        ["solution", "gen_insert_contains", "gen_in_range", "gen_all"]
     )
 
-    generators = ["gen_insert_contains", "gen_in_range"]
-    prefix = ["random_insert_random_contains", "random_insert_in_range"]
-
+    generators = ["gen_insert_contains", "gen_in_range", "gen_all"]
+    prefix = ["random_insert_random_contains", "random_insert_in_range", "all_ops"]
+    
     assert len(generators) == len(prefix)
 
     args = [
@@ -62,6 +62,12 @@ def generate():
             [500_000, 1_000_000, 100, 6777], 
             [100_000, 1_000_000, 100, 38945], 
             [900_000, 1_000_000, 1000, 38945]
+        ], 
+        [
+            [1_000_000, 1_000_000, 0, 34587],
+            [1_000_000, 1_000_000, 0, 5436999],
+            [500_000, 1_000_000, 1, 22],
+            [200_000, 1_000_000, 1, 1109],
         ]
     ]
 
