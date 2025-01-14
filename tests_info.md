@@ -14,11 +14,11 @@
 
 # Giulian
 
-### Best case Splay Trees insert + search: tests 
-### Worst case Splay Trees insert + search: tests 
+### Best case Splay Trees insert + search: tests 44, 45
+### Worst case Splay Trees insert + search: tests 46
 
-### Best case Splay Trees insert + erase: tests 26, 29, 35, 38
-### Worst case Splay Trees insert + erase: tests 25, 28, 34, 37
+### Best case Splay Trees insert + erase: tests 6, 9, 15, 18
+### Worst case Splay Trees insert + erase: tests 5, 8, 14, 17
 
 ## Test 2
   - $1\,000\,000$ de inserari crescatoare
