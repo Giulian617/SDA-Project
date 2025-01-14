@@ -122,7 +122,7 @@ private:
     int predecesor(shared_ptr<WeakAVLNode> node, int value) {
         if (!node) return NEG_INF;
 
-        if (node->value >= value)
+        if (node->value > value)
             return predecesor(node->left, value);
 
         int res = predecesor(node->right, value);
@@ -132,17 +132,17 @@ private:
     int succesor(shared_ptr<WeakAVLNode> node, int value) {
         if (!node) return POS_INF;
 
-        if (node->value <= value)
+        if (node->value < value)
             return succesor(node->right, value);
 
         int res = succesor(node->left, value);
         return min(node->value, res);
     }
 
-    int query(shared_ptr<WeakAVLNode> node, int X, int Y) {
+    long long query(shared_ptr<WeakAVLNode> node, int X, int Y) {
         if (!node) return 0;
 
-        int sum = 0;
+        long long sum = 0;
         if (X <= node->value) sum += query(node->left, X, Y);
         if (X <= node->value && node->value <= Y) sum += node->value;
         if (Y >= node->value) sum += query(node->right, X, Y);
@@ -173,41 +173,38 @@ public:
         return succesor(root, value);
     }
 
-    int query(int X, int Y) {
+    long long query(int X, int Y) {
         return query(root, X, Y);
     }
 };
 
 int main() {
-    ifstream f("abce.in");
-    ofstream g("abce.out");
-
     int Q;
-    f >> Q;
+    cin >> Q;
 
-    WeakAVLTree avl;
+    WeakAVLTree wavl;
     while (Q--) {
         int op, X, Y;
-        f >> op >> X;
+        cin >> op >> X;
         switch (op) {
             case 1:
-                avl.insert(X);
+                wavl.insert(X);
                 break;
             case 2:
-                avl.erase(X);
+                wavl.erase(X);
                 break;
             case 3:
-                g << avl.contains(X) << "\n";
+                cout << wavl.contains(X) << "\n";
                 break;
             case 4:
-                g << avl.predecesor(X) << "\n";
+                cout << wavl.predecesor(X) << "\n";
                 break;
             case 5:
-                g << avl.succesor(X) << "\n";
+                cout << wavl.succesor(X) << "\n";
                 break;
             case 6:
-                f >> Y;
-                g << avl.query(X, Y) << "\n";
+                cin >> Y;
+                cout << wavl.query(X, Y) << "\n";
                 break;
         }
     }
