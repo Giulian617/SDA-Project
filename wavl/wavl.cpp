@@ -5,8 +5,8 @@
 #include <memory>
 using namespace std;
 
-constexpr int NEG_INF = -1000000000;
-constexpr int POS_INF = 1000000000;
+constexpr int NEG_INF = -1e9-1;
+constexpr int POS_INF = 1e9+1;
 
 struct WeakAVLNode {
     int value;
@@ -139,12 +139,15 @@ private:
         return min(node->value, res);
     }
 
-    void query(shared_ptr<WeakAVLNode> node, int X, int Y, vector<int>& result) {
-        if (!node) return;
+    int query(shared_ptr<WeakAVLNode> node, int X, int Y) {
+        if (!node) return 0;
 
-        if (X <= node->value) query(node->left, X, Y, result);
-        if (X <= node->value && node->value <= Y) result.push_back(node->value);
-        if (Y >= node->value) query(node->right, X, Y, result);
+        int sum = 0;
+        if (X <= node->value) sum += query(node->left, X, Y);
+        if (X <= node->value && node->value <= Y) sum += node->value;
+        if (Y >= node->value) sum += query(node->right, X, Y);
+
+        return sum;
     }
 
 public:
@@ -170,10 +173,8 @@ public:
         return succesor(root, value);
     }
 
-    vector<int> query(int X, int Y) {
-        vector<int> result;
-        query(root, X, Y, result);
-        return result;
+    int query(int X, int Y) {
+        return query(root, X, Y);
     }
 };
 
@@ -206,9 +207,7 @@ int main() {
                 break;
             case 6:
                 f >> Y;
-                vector<int> result = avl.query(X, Y);
-                for (int num : result) g << num << " ";
-                g << "\n";
+                g << avl.query(X, Y) << "\n";
                 break;
         }
     }
