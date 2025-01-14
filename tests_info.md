@@ -118,3 +118,15 @@
 
 ## Test 46
   - $500\,000$ de inserari crescatoare si $500\,000$ de cautari in aceeasi ordine
+
+## Test 47
+  -$1,000,000$ de operatii random cu probabilitate egala
+
+## Test 48
+  -$1,000,000$ de operatii random cu probabilitate egala
+
+## Test 49 ##
+  -$500,000$ de operatii insert + $500,000$ de operatii cu probabilitate egala
+
+## Test 50 ##
+  -$500,000$ de operatii insert + $500,000$ de operatii cu probabilitate egala
